@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-animate2</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="styles/login2.css">
+    <link rel="stylesheet" href="styles/header.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="login-gsap.html">login-gsap.html</a></li>
+                <li><a href="login-animate.html">login-animate.html</a></li>
+                <li><a href="login-animate-scale.html">login-animate-scale.html</a></li>
+                <li><a href="login-gsap2.html">login-gsap2.html</a></li>
+                <li><a href="login-animate2.html">login-animate2.html</a></li>
+                <li><a href="login-animate2-scale.html">login-animate2-scale.html</a></li>
+                <li><a href="login-animate3.html">login-animate3.html</a></li>
+                <li><a href="login-gsap3-scale.html">login-gsap3-scale.html</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app">
+        <h3>统一身份认证登录</h3>
+        <div>
+            <span v-for="(item, index) in menuTags" :key="index" @click="setCurrent(index)"
+                :class="{ active: index === currentTabIndex }">{{ item }}</span>
+        </div>
+        <div class="tab">
+            <transition name="custom-classes" enter-active-class="animate__animated animate__fadeInLeft">
+                <component :is="currentComponent"></component>
+            </transition>
+        </div>
+    </div>
+</body>
+<script>
+    const pwLogin = Vue.markRaw({
+        template: '<div><input type="text" placeholder="请输入帐户"><input type="password" placeholder="请输入密码"><button>登录</button><div class="pw-edit"><span><input type="checkbox">记住密码</span><a href="JavaScript:alert(\'忘记密码\')">忘记密码</a></div></div>'
+    })
+    const qrLogin = Vue.markRaw({
+        template: '<div><img src="images/qrcode.png" alt="二维码登录"><br/><p>请使用App扫码登录</p></div>'
+    })
+    const RootComp = {
+        data() {
+            return {
+                currentTabIndex: 0,
+                menuTags: ['帐户登录', '二维码登录'],
+                components: [pwLogin, qrLogin]
+            }
+        },
+        mounted(){
+            
+        },
+        computed: {
+            currentComponent() {
+                return this.components[this.currentTabIndex];
+            }
+        },
+        methods: {
+            setCurrent(index) {
+                this.currentTabIndex = index;
+            }
+        }
+    }
+    // 创建vue应用的根组件
+    const vueApp = Vue.createApp(RootComp)
+    // 挂载处理
+    vueApp.mount('#app')
+</script>
+
+</html>

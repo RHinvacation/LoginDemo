@@ -1,0 +1,107 @@
+body {
+    /* 使用 Flex 布局 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    height: 80vh;
+    /* 设置页面高度为视窗高度 */
+}
+
+/* 主容器样式 */
+#app {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 340px;
+}
+
+#app h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 标签栏样式 */
+#app > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#app > div:nth-child(2) span {
+    cursor: pointer;
+    /* 设置鼠标样式为手型 */
+    width: 50%;
+    height: 25px;
+    text-align: center;
+    padding: 5px 10px;
+    /* 添加内边距 */
+    transition: background-color 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+#app > div:nth-child(2) span.active {
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+button:focus {
+    border-color: #007bff;
+}
+
+/* 按钮样式 */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 链接样式 */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* 表单容器样式 */
+.tab {
+    text-align: center;
+    /* 文本居中 */
+}
+
+/* 使用 Flex 布局将复选框和链接放在同一行，并进行对齐 */
+.tab .pw-edit {
+    display: flex;
+    /* 使用 Flex 布局 */
+    justify-content: space-between;
+    /* 均匀分布子元素 */
+    align-items: center;
+    /* 垂直居中 */
+}
